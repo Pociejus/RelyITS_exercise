@@ -2,7 +2,9 @@ import os
 import mysql.connector
 import xml.etree.ElementTree as ET
 from datetime import datetime
+import logging
 
+logging.basicConfig(level=logging.INFO)
 '''
 Continuing with created database. Uploading data to a table
 '''
@@ -71,7 +73,7 @@ for filename in os.listdir(xml_directory):
 
         data_to_insert.append((current_date, unit_id, quantity, total_amount, total_receipts))
 
-        print(data_to_insert)
+        logging.info(data_to_insert)
         # Adding data to a table
         db_cursor.executemany(insert_query, data_to_insert)
 
@@ -84,5 +86,5 @@ db_cursor.close()
 
 db_connection.close()
 
-print(f'Eilučių lentelėje prieš įkėlimą: {existing_records_before_insert}')
-print(f'Eilučių lentelėje po įkėlimo: {existing_records_after_insert}')
+logging.info(f'Eilučių lentelėje prieš įkėlimą: {existing_records_before_insert}')
+logging.info(f'Eilučių lentelėje po įkėlimo: {existing_records_after_insert}')
