@@ -92,10 +92,13 @@ for filename in os.listdir(xml_directory):
         logging.info(f'duomenys pridėti į Transaction {data_to_insert_transaction}')
         logging.info(f'duomenys pridėti į Retail {data_to_insert_retail}')
 
-        # Adding data to Transaction table
-        db_cursor.executemany(insert_query_transaction, data_to_insert_transaction)
-        # Adding data to RetailTransactions table
-        db_cursor.executemany(insert_query_retail, data_to_insert_retail)
+        try:
+            # Adding data to Transaction table
+            db_cursor.executemany(insert_query_transaction, data_to_insert_transaction)
+            # Adding data to RetailTransactions table
+            db_cursor.executemany(insert_query_retail, data_to_insert_retail)
+        except mysql.connector.errors.IntegrityError as e:
+            logging.error(f"IntegrityError: {e}. Data already exists in the database.")
 
 db_connection.commit()
 
