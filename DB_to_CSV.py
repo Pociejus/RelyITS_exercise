@@ -22,7 +22,6 @@ FROM RetailTransactions
 GROUP BY StoreID
 """
 
-
 db_cursor.execute(query)
 date = datetime.now().strftime("%Y-%m-%d")
 # all data to scv
@@ -39,5 +38,3 @@ db_cursor.close()
 db_connection.close()
 
 print("CSV failas sukurtas sėkmingai.")
-
-
