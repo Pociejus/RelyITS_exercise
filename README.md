@@ -13,7 +13,9 @@ Installation:
 2. Navigate to a RelyITS_exercise folder and enter a command 'pip install -r requirements.txt'.
  
 3.1 At first you have to start with a Create_DB.py file, here you enter your information to connect to a database and run the code.
+
 3.2 Run the XML_to_database.py file, you should see logging info in a console, about the actiont done to a database. 
+
 3.3 Run the DB_to_CSV file, which generates a new .CSV file with information about the stores sales.
  
 
